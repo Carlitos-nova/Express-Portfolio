@@ -1,0 +1,39 @@
+<!--
+  File: COMP229_Assignment1
+  Student: Carlitos de Castro
+  Student ID: 300949290
+  Date: 2021-02-14
+-->
+<%-include partials/header.ejs%>
+<%-include partials/main_nav.ejs%>
+
+  <!--Main Content-->
+  <body>
+
+    <main class="container">
+      <div class="jumbotron">
+        <h3 class="display-4">Welcome to the <%= title %> page</h3>
+      </div>
+      <% if (title == "Home") {%> 
+        <%-include partials/home.ejs%>
+        <% } else {} %>  
+      
+      <% if (title == "About") {%>
+        <%-include partials/about.ejs%>
+        <% } else {} %>
+        
+      <% if (title == "Services") {%>
+        <%-include partials/services.ejs%>
+        <% } else {} %>
+
+      <% if (title == "Contact") {%>
+        <%-include partials/contact.ejs%>
+        <% } else {} %>
+
+      <% if (title == "Products") {%>
+        <%-include partials/products.ejs%>
+        <% } else {} %>
+    </main>
+
+<%-include partials/footer_nav.ejs%>
+<%-include partials/footer.ejs%>
