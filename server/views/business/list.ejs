@@ -1,0 +1,67 @@
+<!--
+  File: COMP229_Assignment2
+  Student: Carlitos de Castro
+  Student ID: 300949290
+  Date: 2021-02-28
+-->
+<%-include ../partials/header.ejs%>
+<%-include ../partials/main_nav.ejs%>
+
+  <!--Main Content-->
+  <body>
+
+    <main class="container">
+      <div class="row">
+          <div class="offset-md-1 col-md-11">
+              <h1><%=title%> Contact(s)</h1>
+
+              <% if(typeof displayName == 'string' && displayName) {%>
+              <a href="/business-list/add" class="btn btn-primary" role="button">
+              <i class="fas fa-plus-circle"></i> Add a Contact</a>
+              <% } %> 
+              <br><br>
+              <table class="table table-bordered table-striped table-hover">
+                <!--Header Row-->
+                <tr class="d-flex">
+                  <% if(typeof displayName == 'string' && displayName) {%>
+                    <th class="text-center col-2">Name</th>
+                    <th class="text-center col-2">Phone Number</th>
+                    <th class="text-center col">Email Address</th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                  <% } else { %>
+                    <th class="text-center col-2">Name</th>
+                    <th class="text-center col-2">Phone Number</th>
+                    <th class="text-center col-1">Email Address</th>
+                  <% } %>  
+                </tr>
+                <!-- Repeatable template row -->
+                <% for (let count=0; count < BusinessList.length; count++){ %>
+                  <tr class="d-flex">
+                    <% if(typeof displayName == 'string' && displayName) {%>
+                      <td class="text-center col-2"><%=BusinessList[count].name %></td>
+                      <td class="text-center col-2"><%=BusinessList[count].phone %></td>
+                      <td class="text-center col"><%=BusinessList[count].email %></td>
+                      <td class="text-center col-1">
+                        <a href="/business-list/edit/<%= BusinessList[count]._id %>" class="btn btn-primary btn-sm">
+                          <i class="fas fa-pencil-alt"></i> Update</a>
+                      </td>
+                      <td class="text-center col-1">
+                        <a href="/business-list/delete/<%= BusinessList[count]._id %>" class="btn btn-danger btn-sm">
+                          <i class="fas fa-trash-alt"></i> Delete</a>
+                      </td>
+                    <% } else { %>
+                      <td class="text-center col-2"><%=BusinessList[count].name %></td>
+                      <td class="text-center col-2"><%=BusinessList[count].phone %></td>
+                      <td class="text-center col-1"><%=BusinessList[count].email %></td>
+                    <% } %>  
+                  </tr>
+                <% } %>
+            </table>
+            <br><br><br><br>
+          </div>
+      </div>
+    </main>
+
+<%-include ../partials/footer_nav.ejs%>
+<%-include ../partials/footer.ejs%>
